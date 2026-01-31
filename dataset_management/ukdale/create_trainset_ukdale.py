@@ -3,13 +3,25 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 import argparse
-from functions import load_dataframe
+# from functions import load_dataframe
 
 
 DATA_DIRECTORY = '../../data/refit/UKDALE/'
 SAVE_PATH = 'kettle/'
 AGG_MEAN = 522
 AGG_STD = 814
+
+
+def load_dataframe(directory, building, channel, col_names=['time', 'data'], nrows=None):
+    df = pd.read_table(directory + 'house_' + str(building) + '/' + 'channel_' +
+                       str(channel) + '.dat',
+                       sep="\s+",
+                       nrows=nrows,
+                       usecols=[0, 1],
+                       names=col_names,
+                       dtype={'time': str},
+                       )
+    return df
 
 
 def get_arguments():
@@ -43,7 +55,11 @@ def main():
     nrows = None
     debug = False
 
-    train = pd.DataFrame(columns=['aggregate', appliance_name])
+    # train = pd.DataFrame(columns=['aggregate', appliance_name])
+    train = pd.DataFrame({
+    'aggregate': pd.Series(dtype='float32'),
+    appliance_name: pd.Series(dtype='float32')
+    })
 
     for h in params_appliance[appliance_name]['houses']:
         print('    ' + args.data_dir + 'house_' + str(h) + '/'

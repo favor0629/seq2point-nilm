@@ -5,13 +5,14 @@ from seq2point_test import Tester
 # Allows a model to be tested from the terminal.
 
 # You need to input your test data directory
-test_directory="~/mingjun/research/housedata/refit/kettle/kettle_test_H2.csv"
-
+# test_directory="~/mingjun/research/housedata/refit/kettle/kettle_test_H2.csv"
+# test_directory="/home/favor/seq2point-nilm/kettle/kettle_test_.csv"
+test_directory="/home/favor/seq2point-nilm/kettle_house1_split/kettle_test_.csv"
 parser = argparse.ArgumentParser(description="Train a pruned neural network for energy disaggregation. ")
 
 parser.add_argument("--appliance_name", type=remove_space, default="kettle", help="The name of the appliance to perform disaggregation with. Default is kettle. Available are: kettle, fridge, dishwasher, microwave. ")
 parser.add_argument("--batch_size", type=int, default="1000", help="The batch size to use when training the network. Default is 1000. ")
-parser.add_argument("--crop", type=int, default="10000", help="The number of rows of the dataset to take training data from. Default is 10000. ")
+parser.add_argument("--crop", type=int, default="200000", help="The number of rows of the dataset to take training data from. Default is 10000. ")
 parser.add_argument("--algorithm", type=remove_space, default="seq2point", help="The pruning algorithm of the model to test. Default is none. ")
 parser.add_argument("--network_type", type=remove_space, default="", help="The seq2point architecture to use. Only use if you do not want to use the standard architecture. Available are: default, dropout, reduced, and reduced_dropout. ")
 parser.add_argument("--input_window_length", type=int, default="599", help="Number of input data points to network. Default is 599. ")

@@ -53,7 +53,7 @@ class Trainer():
         self.__max_chunk_size = 5 * 10 ** 2
         self.__validation_frequency = validation_frequency
         self.__ram_threshold=5*10**5
-        self.__skip_rows_train=10000000
+        self.__skip_rows_train=0
         self.__validation_steps=100
         self.__skip_rows_val = 0
 

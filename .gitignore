@@ -1,0 +1,4 @@
+kettle/
+kettle_house1_split/
+saved_models/
+*.h5
